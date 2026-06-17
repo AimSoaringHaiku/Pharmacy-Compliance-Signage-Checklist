@@ -28,6 +28,7 @@ HTML_DX = """
 # ====================================
 
 dashboard_data = []
+all_kasans = set()
 count = 0
 
 if not os.path.exists(csv_path):
@@ -37,8 +38,14 @@ else:
         reader = csv.DictReader(f)
         for row in reader:
             url = row.get('url', row.get('店舗URL', ''))
-            kasan_list = row.get('kasan_list', row.get('加算届出状況', ''))
+            kasan_list_str = row.get('kasan_list', row.get('加算届出状況', ''))
             base_html = row.get('web_text', row.get('Webテキスト', ''))
+            
+            # 💡加算をリスト化し、全店舗の加算の種類を「セット(all_kasans)」に集める
+            kasans = [k.strip() for k in kasan_list_str.replace("／", ",").split(",") if k.strip()]
+            for k in kasans:
+                if k != "記載なし":
+                    all_kasans.add(k)
             
             if url:
                 match = re.search(r'/shop/([a-zA-Z0-9_-]+)/', url)
@@ -48,8 +55,8 @@ else:
                     file_path = os.path.join(output_dir, file_name)
                     
                     final_html = base_html + "\n<hr>\n"
-                    has_renkei = "連携強化加算" in kasan_list
-                    has_dx = "電子的調剤情報連携体制整備加算" in kasan_list
+                    has_renkei = "連携強化加算" in kasans
+                    has_dx = "電子的調剤情報連携体制整備加算" in kasans
                     
                     if has_renkei: final_html += HTML_RENKEI
                     if has_dx: final_html += HTML_DX
@@ -57,73 +64,85 @@ else:
                     with open(file_path, mode='w', encoding='utf-8') as out_f:
                         out_f.write(final_html)
                     
-                    # 💡加算リストの「／」をHTMLの改行「<br>」に変換して見やすくする
-                    kasan_formatted = kasan_list.replace("／", "<br>").replace(" ", "")
-
                     dashboard_data.append({
                         "name": tenant_name,
                         "file": file_name,
-                        "kasan_list": kasan_formatted,
+                        "kasans": kasans,
                         "has_renkei": has_renkei,
                         "has_dx": has_dx
                     })
                     count += 1
 
-    # ====== 新・目次（ダッシュボード） 白地＆シンプル版 ======
+    # 💡集めた加算を五十音順に並べ替えてヘッダー（列）を作る
+    sorted_kasans = sorted(list(all_kasans))
+
+    # ====== 新・目次（加算○×マトリックス表） ======
     index_html = """<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>薬局コンプライアンス更新案件（加算対応）</title>
+<title>薬局コンプライアンス・加算マトリックス表</title>
 <style>
   body { font-family: sans-serif; font-size: 11px; margin: 10px; background-color: #fff; }
   h1 { font-size: 16px; margin: 0 0 10px 0; color: #333; }
-  table { width: 100%; border-collapse: collapse; }
-  th, td { border: 1px solid #ccc; padding: 6px; text-align: left; vertical-align: top; }
-  th { background-color: #f5f5f5; white-space: nowrap; }
-  .kasan-list { font-size: 10px; color: #555; line-height: 1.4; }
-  .status-high { color: #d32f2f; font-weight: bold; } /* 赤字 */
-  .status-low { color: #f57c00; font-weight: bold; } /* オレンジ字 */
-  .status-ok { color: #388e3c; } /* 緑字 */
+  .table-container { overflow-x: auto; max-width: 100%; }
+  table { border-collapse: collapse; white-space: nowrap; }
+  th, td { border: 1px solid #ccc; padding: 6px 8px; text-align: left; }
+  th { background-color: #f0f4f8; vertical-align: bottom; }
+  
+  /* 💡ヘッダーを縦書きにして横幅を節約する神CSS */
+  th.kasan-header { writing-mode: vertical-rl; text-orientation: mixed; padding: 10px 4px; height: 160px; }
+  
+  .status-high { color: #d32f2f; font-weight: bold; }
+  .status-low { color: #f57c00; font-weight: bold; }
+  .status-ok { color: #388e3c; }
+  .mark-o { color: #0066cc; font-weight: bold; text-align: center; } /* ○は青字で中央揃え */
+  .mark-x { color: #eeeeee; text-align: center; } /* 無い場合は薄いグレーのハイフン */
   a { color: #0066cc; text-decoration: none; font-weight: bold; }
   a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
-  <h1>更新案件一覧（連携強化加算・医療DX加算）</h1>
+  <h1>薬局Webサイト コンプライアンス更新・加算マトリックス表</h1>
+  <div class="table-container">
   <table>
     <thead>
       <tr>
         <th>店舗ID</th>
         <th>更新後ページ</th>
-        <th>取得している加算一覧</th>
         <th>対応ステータス</th>
-      </tr>
+"""
+    # ヘッダー列を自動展開
+    for k in sorted_kasans:
+        index_html += f"        <th class='kasan-header'>{k}</th>\n"
+        
+    index_html += """      </tr>
     </thead>
     <tbody>
 """
     for d in dashboard_data:
-        # 💡アイコンと短い文字だけのステータス判定
         status_html = ""
-        if d['has_renkei']:
-            status_html += '<span class="status-high">⚠️連携強化(追加済)</span><br>'
-        if d['has_dx']:
-            status_html += '<span class="status-low">△医療DX(補強済)</span>'
+        if d['has_renkei']: status_html += '<span class="status-high">⚠️連携強化(追加済)</span><br>'
+        if d['has_dx']: status_html += '<span class="status-low">△医療DX(補強済)</span>'
+        if not d['has_renkei'] and not d['has_dx']: status_html = '<span class="status-ok">✅適合(修正不要)</span>'
         
-        if not d['has_renkei'] and not d['has_dx']:
-            status_html = '<span class="status-ok">✅適合(修正不要)</span>'
+        index_html += f"""      <tr>
+        <td>{d['name']}</td>
+        <td><a href="{d['file']}" target="_blank">📄 ページ確認</a></td>
+        <td>{status_html}</td>
+"""
+        # 加算を持っているか〇×判定
+        for k in sorted_kasans:
+            if k in d['kasans']:
+                index_html += "        <td class='mark-o'>〇</td>\n"
+            else:
+                index_html += "        <td class='mark-x'>-</td>\n"
+                
+        index_html += "      </tr>\n"
 
-        index_html += f"""
-      <tr>
-        <td style="white-space: nowrap;">{d['name']}</td>
-        <td style="white-space: nowrap;"><a href="{d['file']}" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">{d['kasan_list']}</td>
-        <td style="white-space: nowrap;">{status_html}</td>
-      </tr>"""
-
-    index_html += """
-    </tbody>
+    index_html += """    </tbody>
   </table>
+  </div>
 </body>
 </html>"""
 
@@ -132,4 +151,4 @@ else:
         f.write(index_html)
 
     print("========================================")
-    print(f"🎉 ダッシュボード(index.html)のアップデートが完了しました！")
+    print(f"🎉 マトリックス版ダッシュボード(index.html)の作成が完了しました！")
