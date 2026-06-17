@@ -2,7 +2,6 @@ import csv
 import os
 import re
 
-# 1. 読み込むCSV
 csv_path = "生成結果.csv" 
 output_dir = "outputs/web_html"
 os.makedirs(output_dir, exist_ok=True)
@@ -28,7 +27,6 @@ HTML_DX = """
 """
 # ====================================
 
-# 目次（ダッシュボード）用のデータを貯める箱
 dashboard_data = []
 count = 0
 
@@ -50,85 +48,77 @@ else:
                     file_path = os.path.join(output_dir, file_name)
                     
                     final_html = base_html + "\n<hr>\n"
-                    
                     has_renkei = "連携強化加算" in kasan_list
                     has_dx = "電子的調剤情報連携体制整備加算" in kasan_list
                     
-                    if has_renkei:
-                        final_html += HTML_RENKEI
-                    if has_dx:
-                        final_html += HTML_DX
+                    if has_renkei: final_html += HTML_RENKEI
+                    if has_dx: final_html += HTML_DX
                         
                     with open(file_path, mode='w', encoding='utf-8') as out_f:
                         out_f.write(final_html)
                     
-                    # ダッシュボード用に情報を記録
+                    # 💡加算リストの「／」をHTMLの改行「<br>」に変換して見やすくする
+                    kasan_formatted = kasan_list.replace("／", "<br>").replace(" ", "")
+
                     dashboard_data.append({
                         "name": tenant_name,
                         "file": file_name,
+                        "kasan_list": kasan_formatted,
                         "has_renkei": has_renkei,
                         "has_dx": has_dx
                     })
                     count += 1
 
-    # ====== ここから時短テク：目次（ダッシュボード）index.html の自動生成 ======
+    # ====== 新・目次（ダッシュボード） 白地＆シンプル版 ======
     index_html = """<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>薬局コンプライアンス監査・更新ダッシュボード</title>
+<title>薬局コンプライアンス更新案件（加算対応）</title>
 <style>
-  body { font-family: sans-serif; font-size: 11px; margin: 10px; } /* 余白少なめ・小さめ */
-  h1 { font-size: 16px; margin: 0 0 10px 0; }
+  body { font-family: sans-serif; font-size: 11px; margin: 10px; background-color: #fff; }
+  h1 { font-size: 16px; margin: 0 0 10px 0; color: #333; }
   table { width: 100%; border-collapse: collapse; }
-  th, td { border: 1px solid #999; padding: 4px; text-align: left; }
-  th { background-color: #eee; white-space: nowrap; }
-  .risk-high { background-color: #ffebee; color: #c62828; font-weight: bold; } /* 薄い赤色 */
-  .risk-low { background-color: #fff9c4; color: #2e7d32; } /* 薄い黄色 */
-  a { color: #0066cc; text-decoration: none; }
+  th, td { border: 1px solid #ccc; padding: 6px; text-align: left; vertical-align: top; }
+  th { background-color: #f5f5f5; white-space: nowrap; }
+  .kasan-list { font-size: 10px; color: #555; line-height: 1.4; }
+  .status-high { color: #d32f2f; font-weight: bold; } /* 赤字 */
+  .status-low { color: #f57c00; font-weight: bold; } /* オレンジ字 */
+  .status-ok { color: #388e3c; } /* 緑字 */
+  a { color: #0066cc; text-decoration: none; font-weight: bold; }
   a:hover { text-decoration: underline; }
-  @media print {
-    body { font-size: 10px; }
-    a { color: #000; text-decoration: none; }
-  }
 </style>
 </head>
 <body>
-  <h1>薬局Webサイト コンプライアンス監査・更新一覧（最新ルール適用版）</h1>
-  <p>※以下は最新の施設基準に適合するよう自動生成された修正後ページへのリンクです。印刷時はそのままA4に収まります。</p>
+  <h1>更新案件一覧（連携強化加算・医療DX加算）</h1>
   <table>
     <thead>
       <tr>
-        <th>店舗URL(ID)</th>
+        <th>店舗ID</th>
         <th>更新後ページ</th>
-        <th>連携強化加算<br>(災害体制)</th>
-        <th>医療DX加算<br>(情報活用)</th>
-        <th>修正前リスク・今回の対応内容</th>
+        <th>取得している加算一覧</th>
+        <th>対応ステータス</th>
       </tr>
     </thead>
     <tbody>
 """
     for d in dashboard_data:
-        renkei_str = "あり" if d['has_renkei'] else "なし"
-        dx_str = "あり" if d['has_dx'] else "なし"
-        
+        # 💡アイコンと短い文字だけのステータス判定
+        status_html = ""
         if d['has_renkei']:
-            risk_class = "risk-high"
-            status_text = "⚠️重大不備(返還ﾘｽｸ) → 災害対応テキストを追加済"
-        elif d['has_dx']:
-            risk_class = "risk-low"
-            status_text = "△文言不足(指導ﾘｽｸ) → 医療DXの具体文言を補強済"
-        else:
-            risk_class = ""
-            status_text = "適合（修正不要）"
+            status_html += '<span class="status-high">⚠️連携強化(追加済)</span><br>'
+        if d['has_dx']:
+            status_html += '<span class="status-low">△医療DX(補強済)</span>'
+        
+        if not d['has_renkei'] and not d['has_dx']:
+            status_html = '<span class="status-ok">✅適合(修正不要)</span>'
 
         index_html += f"""
-      <tr class="{risk_class}">
-        <td>{d['name']}</td>
-        <td><a href="{d['file']}" target="_blank">📄 完成版を確認</a></td>
-        <td>{renkei_str}</td>
-        <td>{dx_str}</td>
-        <td>{status_text}</td>
+      <tr>
+        <td style="white-space: nowrap;">{d['name']}</td>
+        <td style="white-space: nowrap;"><a href="{d['file']}" target="_blank">📄 ページ確認</a></td>
+        <td class="kasan-list">{d['kasan_list']}</td>
+        <td style="white-space: nowrap;">{status_html}</td>
       </tr>"""
 
     index_html += """
@@ -137,10 +127,9 @@ else:
 </body>
 </html>"""
 
-    # index.htmlを保存
     index_path = os.path.join(output_dir, "index.html")
     with open(index_path, mode='w', encoding='utf-8') as f:
         f.write(index_html)
 
     print("========================================")
-    print(f"🎉 全 {count} 店舗のHTML保存 ＋ ダッシュボード(index.html)の作成が完了しました！")
+    print(f"🎉 ダッシュボード(index.html)のアップデートが完了しました！")
