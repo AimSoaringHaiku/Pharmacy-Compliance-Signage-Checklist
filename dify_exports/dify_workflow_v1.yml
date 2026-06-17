@@ -1,0 +1,303 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: workflow
+  name: 掲示物チェック
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/gemini:0.8.4@23aed1fa4d2c8015337bd18efa28b3dccf5b7309a83b1501541fb7358518faec
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1781254485865-source-1781572313785-target
+      selected: false
+      source: '1781254485865'
+      sourceHandle: source
+      target: '1781572313785'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: code
+      id: 1781252044166-source-1781590044150-target
+      source: '1781252044166'
+      sourceHandle: source
+      target: '1781590044150'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1781590044150-source-1781254485865-target
+      source: '1781590044150'
+      sourceHandle: source
+      target: '1781254485865'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: 「加算リストとWebテキストを入力する場所」
+        selected: false
+        title: 開始ノード
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: url
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: url
+        - default: ''
+          hint: ''
+          label: kasan_list
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: kasan_list
+        - default: ''
+          hint: ''
+          label: web_text
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: web_text
+      height: 190
+      id: '1781252044166'
+      position:
+        x: 111.99998474121094
+        y: 298.99999618530273
+      positionAbsolute:
+        x: 111.99998474121094
+        y: 298.99999618530273
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-flash-latest
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: f842a770-b9cd-401a-95f5-8e4e4a2ab57a
+          role: system
+          text: "あなたは薬局のコンプライアンス監査員です。\n以下の【ルール正解表（JSON）】と、ユーザーから入力される【店舗の加算届出状況】を突き合わせ、この店舗がWebサイトに掲載しなければならない義務項目をリストアップしてください。\n\
+            その上で、【現在のWebサイトのテキスト】と照らし合わせ、義務項目が網羅されているか判定し、不足している文言があれば指摘してください。「不足事項がある場合は、そのままWebサイトにコピー＆ペーストして使える『推奨テキスト（改善案）』もセットで出力してください。」\n\
+            \n【ルール正解表（JSON）】\n{\n  \"pharmacy_compliance_rules\": {\n    \"base_requirements\"\
+            : {\n      \"description\": \"すべての保険薬局における必須掲示項目\",\n      \"items\":\
+            \ [\n        {\n          \"name\": \"薬局開設許可証\",\n          \"locations\"\
+            : { \"inside\": true, \"outside\": false, \"web\": false },\n        \
+            \  \"notes\": \"薬局内の見やすい場所\"\n        },\n        {\n          \"name\"\
+            : \"保険薬局である旨の表示\",\n          \"locations\": { \"inside\": true, \"outside\"\
+            : true, \"web\": false },\n          \"notes\": \"薬局の見やすい場所（内or外）\"\n\
+            \        },\n        {\n          \"name\": \"調剤報酬点数表\",\n          \"\
+            locations\": { \"inside\": true, \"outside\": false, \"web\": true },\n\
+            \          \"notes\": \"原則ウェブサイトにも掲載（経過措置ありの場合あり）\"\n        },\n    \
+            \    {\n          \"name\": \"個人情報保護方針\",\n          \"locations\": {\
+            \ \"inside\": true, \"outside\": false, \"web\": false }\n        },\n\
+            \        {\n          \"name\": \"薬剤師不在時間\",\n          \"locations\"\
+            : { \"inside\": true, \"outside\": true, \"web\": false },\n         \
+            \ \"condition\": \"不在になる場合のみ\"\n        }\n      ]\n    },\n    \"additional_requirements\"\
+            : {\n      \"description\": \"特定の施設基準（加算）の届出・算定に伴い発生する掲示義務\",\n      \"\
+            items\": [\n        {\n          \"target_kasan\": \"地域支援体制加算\",\n   \
+            \       \"required_postings\": [\n            {\n              \"name\"\
+            : \"在宅患者訪問薬剤管理指導を行う薬局である旨\",\n              \"locations\": { \"inside\"\
+            : true, \"outside\": true, \"web\": false }\n            },\n        \
+            \    {\n              \"name\": \"近隣及び自局に直接連絡が取れる連絡先電話番号等\",\n       \
+            \       \"locations\": { \"inside\": false, \"outside\": true, \"web\"\
+            : false }\n            }\n          ]\n        },\n        {\n       \
+            \   \"target_kasan\": \"後発医薬品調剤体制加算\",\n          \"required_postings\"\
+            : [\n            {\n              \"name\": \"後発医薬品の調剤を積極的に行っている旨\",\n\
+            \              \"locations\": { \"inside\": true, \"outside\": true, \"\
+            web\": false }\n            }\n          ]\n        },\n        {\n  \
+            \        \"target_kasan\": \"夜間・休日等加算\",\n          \"required_postings\"\
+            : [\n            {\n              \"name\": \"開局時間\",\n              \"\
+            locations\": { \"inside\": true, \"outside\": true, \"web\": false }\n\
+            \            },\n            {\n              \"name\": \"対象となる日及び受付時間\"\
+            ,\n              \"locations\": { \"inside\": true, \"outside\": false,\
+            \ \"web\": false }\n            }\n          ]\n        },\n        {\n\
+            \          \"target_kasan\": \"居宅療養管理指導\",\n          \"required_postings\"\
+            : [\n            {\n              \"name\": \"運営規程、サービス事業者等の重要事項\",\n\
+            \              \"locations\": { \"inside\": true, \"outside\": false,\
+            \ \"web\": true },\n              \"notes\": \"原則としてウェブサイトに掲載\"\n    \
+            \        }\n          ]\n        },\n        {\n          \"target_kasan\"\
+            : \"電子的調剤情報連携体制整備加算\",\n          \"required_postings\": [\n         \
+            \   {\n              \"name\": \"医療DX推進の体制・情報活用に関する事項\",\n           \
+            \   \"locations\": { \"inside\": true, \"outside\": false, \"web\": true\
+            \ },\n              \"notes\": \"原則としてウェブサイトに掲載\"\n            }\n   \
+            \       ]\n        },\n        {\n          \"target_kasan\": \"連携強化加算\"\
+            ,\n          \"required_postings\": [\n            {\n              \"\
+            name\": \"災害や新興感染症発生時における対応可能な体制\",\n              \"locations\": { \"\
+            inside\": false, \"outside\": false, \"web\": true },\n              \"\
+            notes\": \"ウェブサイトで広く周知（行政や薬剤師会のページ等へのリンクのみは不可）\"\n              \"warning\"\
+            : \"【重要】未掲載のまま算定すると要件不備となり、個別指導等で自主返還（返金）リスクが生じます。速やかな是正を推奨します。\" \n \
+            \           }\n          ]\n        },\n        {\n          \"target_kasan\"\
+            : \"バイオ後続品調剤体制加算\",\n          \"required_postings\": [\n            {\n\
+            \              \"name\": \"バイオ後続品の調剤を積極的に行っている旨\",\n              \"locations\"\
+            : { \"inside\": true, \"outside\": true, \"web\": false }\n          \
+            \  }\n          ]\n        }\n      ]\n    },\n    \"specific_treatments\"\
+            : {\n      \"description\": \"特定の制度や取扱いに伴う掲示義務\",\n      \"items\": [\n\
+            \        {\n          \"target\": \"長期収載品の調剤\",\n          \"required_postings\"\
+            : [\n            {\n              \"name\": \"長期収載品の処方等又は調剤に係る費用徴収その他必要な事項\"\
+            ,\n              \"locations\": { \"inside\": true, \"outside\": false,\
+            \ \"web\": true },\n              \"notes\": \"原則としてウェブサイトに掲載\"\n    \
+            \        }\n          ]\n        }\n      ]\n    }\n  }\n}"
+        - id: 79d7d4a9-9718-4e59-9cf5-9a4b8aa8648f
+          role: user
+          text: '【店舗の加算届出状況】 {{#1781252044166.kasan_list#}}
+
+            【現在のWebサイトのテキスト】 {{#1781252044166.web_text#}}'
+        selected: true
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 89
+      id: '1781254485865'
+      position:
+        x: 514.9999847412109
+        y: 283.99999618530273
+      positionAbsolute:
+        x: 514.9999847412109
+        y: 283.99999618530273
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1781254485865'
+          - text
+          value_type: string
+          variable: 判定結果
+        selected: false
+        title: 出力
+        type: end
+      height: 89
+      id: '1781572313785'
+      position:
+        x: 610.9999847412109
+        y: 551.9999961853027
+      positionAbsolute:
+        x: 610.9999847412109
+        y: 551.9999961853027
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import time\n\ndef main(**kwargs) -> dict:\n    # どんな入力が来ても無視して、安全に12秒間待機する\n\
+          \    time.sleep(12)\n    return {\n        \"status\": \"success\"\n   \
+          \ }\n"
+        code_language: python3
+        outputs:
+          status:
+            children: null
+            type: string
+        selected: false
+        title: コード実行 2
+        type: code
+        variables:
+        - value_selector:
+          - '1781252044166'
+          - url
+          value_type: string
+          variable: url
+      height: 53
+      id: '1781590044150'
+      position:
+        x: 273.99998474121094
+        y: 582.9999961853027
+      positionAbsolute:
+        x: 273.99998474121094
+        y: 582.9999961853027
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -126.99998474121094
+      y: -157.74999618530273
+      zoom: 1
+  rag_pipeline_variables: []
