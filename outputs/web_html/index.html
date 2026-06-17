@@ -2,305 +2,1002 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>薬局コンプライアンス更新案件（加算対応）</title>
+<title>薬局コンプライアンス・加算マトリックス表</title>
 <style>
   body { font-family: sans-serif; font-size: 11px; margin: 10px; background-color: #fff; }
   h1 { font-size: 16px; margin: 0 0 10px 0; color: #333; }
-  table { width: 100%; border-collapse: collapse; }
-  th, td { border: 1px solid #ccc; padding: 6px; text-align: left; vertical-align: top; }
-  th { background-color: #f5f5f5; white-space: nowrap; }
-  .kasan-list { font-size: 10px; color: #555; line-height: 1.4; }
-  .status-high { color: #d32f2f; font-weight: bold; } /* 赤字 */
-  .status-low { color: #f57c00; font-weight: bold; } /* オレンジ字 */
-  .status-ok { color: #388e3c; } /* 緑字 */
+  .table-container { overflow-x: auto; max-width: 100%; }
+  table { border-collapse: collapse; white-space: nowrap; }
+  th, td { border: 1px solid #ccc; padding: 6px 8px; text-align: left; }
+  th { background-color: #f0f4f8; vertical-align: bottom; }
+  
+  /* 💡ヘッダーを縦書きにして横幅を節約する神CSS */
+  th.kasan-header { writing-mode: vertical-rl; text-orientation: mixed; padding: 10px 4px; height: 160px; }
+  
+  .status-high { color: #d32f2f; font-weight: bold; }
+  .status-low { color: #f57c00; font-weight: bold; }
+  .status-ok { color: #388e3c; }
+  .mark-o { color: #0066cc; font-weight: bold; text-align: center; } /* ○は青字で中央揃え */
+  .mark-x { color: #eeeeee; text-align: center; } /* 無い場合は薄いグレーのハイフン */
   a { color: #0066cc; text-decoration: none; font-weight: bold; }
   a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
-  <h1>更新案件一覧（連携強化加算・医療DX加算）</h1>
+  <h1>薬局Webサイト コンプライアンス更新・加算マトリックス表</h1>
+  <div class="table-container">
   <table>
     <thead>
       <tr>
         <th>店舗ID</th>
         <th>更新後ページ</th>
-        <th>取得している加算一覧</th>
         <th>対応ステータス</th>
+        <th class='kasan-header'>バイオ後続品調剤体制加算</th>
+        <th class='kasan-header'>在宅中心静脈栄養法加算</th>
+        <th class='kasan-header'>在宅患者医療用麻薬持続注射療法加算</th>
+        <th class='kasan-header'>在宅患者訪問薬剤管理指導料</th>
+        <th class='kasan-header'>在宅薬学総合体制加算１</th>
+        <th class='kasan-header'>在宅薬学総合体制加算２</th>
+        <th class='kasan-header'>地域支援・医薬品供給対応体制加算１</th>
+        <th class='kasan-header'>地域支援・医薬品供給対応体制加算２</th>
+        <th class='kasan-header'>地域支援・医薬品供給対応体制加算４</th>
+        <th class='kasan-header'>服薬管理指導料の注１</th>
+        <th class='kasan-header'>無菌製剤処理加算</th>
+        <th class='kasan-header'>特定薬剤管理指導加算２</th>
+        <th class='kasan-header'>調剤基本料１</th>
+        <th class='kasan-header'>調剤基本料３イ</th>
+        <th class='kasan-header'>連携強化加算</th>
+        <th class='kasan-header'>電子的調剤情報連携体制整備加算</th>
       </tr>
     </thead>
     <tbody>
-
       <tr>
-        <td style="white-space: nowrap;">kohoku</td>
-        <td style="white-space: nowrap;"><a href="kohoku.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅中心静脈栄養法加算<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>kohoku</td>
+        <td><a href="kohoku.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">kohoku2</td>
-        <td style="white-space: nowrap;"><a href="kohoku2.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅中心静脈栄養法加算<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>kohoku2</td>
+        <td><a href="kohoku2.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">machiya</td>
-        <td style="white-space: nowrap;"><a href="machiya.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>在宅患者訪問薬剤管理指導料<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>machiya</td>
+        <td><a href="machiya.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">minamisenju</td>
-        <td style="white-space: nowrap;"><a href="minamisenju.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>minamisenju</td>
+        <td><a href="minamisenju.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">azusawa</td>
-        <td style="white-space: nowrap;"><a href="azusawa.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>azusawa</td>
+        <td><a href="azusawa.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">itabashi</td>
-        <td style="white-space: nowrap;"><a href="itabashi.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅中心静脈栄養法加算<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>itabashi</td>
+        <td><a href="itabashi.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">oyama</td>
-        <td style="white-space: nowrap;"><a href="oyama.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>oyama</td>
+        <td><a href="oyama.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">kamijujo</td>
-        <td style="white-space: nowrap;"><a href="kamijujo.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算２<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>kamijujo</td>
+        <td><a href="kamijujo.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">nakazato</td>
-        <td style="white-space: nowrap;"><a href="nakazato.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>nakazato</td>
+        <td><a href="nakazato.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">nishigahara</td>
-        <td style="white-space: nowrap;"><a href="nishigahara.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅中心静脈栄養法加算<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>nishigahara</td>
+        <td><a href="nishigahara.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">oimachi</td>
-        <td style="white-space: nowrap;"><a href="oimachi.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算２<br>在宅患者医療用麻薬持続注射療法加算<br>在宅中心静脈栄養法加算<br>無菌製剤処理加算<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>oimachi</td>
+        <td><a href="oimachi.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">oimachi2</td>
-        <td style="white-space: nowrap;"><a href="oimachi2.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>oimachi2</td>
+        <td><a href="oimachi2.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">gotanda</td>
-        <td style="white-space: nowrap;"><a href="gotanda.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>gotanda</td>
+        <td><a href="gotanda.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">gotandaekimae</td>
-        <td style="white-space: nowrap;"><a href="gotandaekimae.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算２<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>gotandaekimae</td>
+        <td><a href="gotandaekimae.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">togoshiginza</td>
-        <td style="white-space: nowrap;"><a href="togoshiginza.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算２<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>togoshiginza</td>
+        <td><a href="togoshiginza.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">ushigome</td>
-        <td style="white-space: nowrap;"><a href="ushigome.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算２<br>在宅患者医療用麻薬持続注射療法加算<br>在宅中心静脈栄養法加算<br>無菌製剤処理加算<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>ushigome</td>
+        <td><a href="ushigome.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">kawadacho</td>
-        <td style="white-space: nowrap;"><a href="kawadacho.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算２<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>kawadacho</td>
+        <td><a href="kawadacho.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">shinwakamatsucho</td>
-        <td style="white-space: nowrap;"><a href="shinwakamatsucho.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>shinwakamatsucho</td>
+        <td><a href="shinwakamatsucho.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">nishishinjuku</td>
-        <td style="white-space: nowrap;"><a href="nishishinjuku.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算２<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>nishishinjuku</td>
+        <td><a href="nishishinjuku.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">wakamatsukawadaekimae</td>
-        <td style="white-space: nowrap;"><a href="wakamatsukawadaekimae.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算２<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>無菌製剤処理加算<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>wakamatsukawadaekimae</td>
+        <td><a href="wakamatsukawadaekimae.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">kugayama</td>
-        <td style="white-space: nowrap;"><a href="kugayama.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-low">△医療DX(補強済)</span></td>
+        <td>kugayama</td>
+        <td><a href="kugayama.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">akihabara</td>
-        <td style="white-space: nowrap;"><a href="akihabara.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅患者医療用麻薬持続注射療法加算<br>在宅中心静脈栄養法加算<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>akihabara</td>
+        <td><a href="akihabara.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">shinokachimachi</td>
-        <td style="white-space: nowrap;"><a href="shinokachimachi.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅中心静脈栄養法加算<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>shinokachimachi</td>
+        <td><a href="shinokachimachi.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">tsukiji</td>
-        <td style="white-space: nowrap;"><a href="tsukiji.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>tsukiji</td>
+        <td><a href="tsukiji.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">iidabashi</td>
-        <td style="white-space: nowrap;"><a href="iidabashi.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算２<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>iidabashi</td>
+        <td><a href="iidabashi.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">komagome</td>
-        <td style="white-space: nowrap;"><a href="komagome.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>komagome</td>
+        <td><a href="komagome.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">nezu</td>
-        <td style="white-space: nowrap;"><a href="nezu.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>nezu</td>
+        <td><a href="nezu.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">onarimon2</td>
-        <td style="white-space: nowrap;"><a href="onarimon2.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>onarimon2</td>
+        <td><a href="onarimon2.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">toranomon</td>
-        <td style="white-space: nowrap;"><a href="toranomon.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅中心静脈栄養法加算<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>toranomon</td>
+        <td><a href="toranomon.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">toranomon2</td>
-        <td style="white-space: nowrap;"><a href="toranomon2.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算４<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>toranomon2</td>
+        <td><a href="toranomon2.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">hiroo</td>
-        <td style="white-space: nowrap;"><a href="hiroo.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>hiroo</td>
+        <td><a href="hiroo.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">mita</td>
-        <td style="white-space: nowrap;"><a href="mita.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>特定薬剤管理指導加算２<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>mita</td>
+        <td><a href="mita.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">mishuku</td>
-        <td style="white-space: nowrap;"><a href="mishuku.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>在宅中心静脈栄養法加算<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>mishuku</td>
+        <td><a href="mishuku.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">chofu</td>
-        <td style="white-space: nowrap;"><a href="chofu.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>chofu</td>
+        <td><a href="chofu.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">hibarigaoka</td>
-        <td style="white-space: nowrap;"><a href="hibarigaoka.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算２<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>hibarigaoka</td>
+        <td><a href="hibarigaoka.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">yagisawa</td>
-        <td style="white-space: nowrap;"><a href="yagisawa.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅中心静脈栄養法加算<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>yagisawa</td>
+        <td><a href="yagisawa.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">mitaka</td>
-        <td style="white-space: nowrap;"><a href="mitaka.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-low">△医療DX(補強済)</span></td>
+        <td>mitaka</td>
+        <td><a href="mitaka.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">mitaka2</td>
-        <td style="white-space: nowrap;"><a href="mitaka2.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅中心静脈栄養法加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-low">△医療DX(補強済)</span></td>
+        <td>mitaka2</td>
+        <td><a href="mitaka2.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">tachikawa</td>
-        <td style="white-space: nowrap;"><a href="tachikawa.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅中心静脈栄養法加算<br>連携強化加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td>tachikawa</td>
+        <td><a href="tachikawa.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-high">⚠️連携強化(追加済)</span><br><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">motosumiyoshi</td>
-        <td style="white-space: nowrap;"><a href="motosumiyoshi.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅中心静脈栄養法加算<br>特定薬剤管理指導加算２<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-low">△医療DX(補強済)</span></td>
+        <td>motosumiyoshi</td>
+        <td><a href="motosumiyoshi.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">motomachi</td>
-        <td style="white-space: nowrap;"><a href="motomachi.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅中心静脈栄養法加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-low">△医療DX(補強済)</span></td>
+        <td>motomachi</td>
+        <td><a href="motomachi.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">yokohama</td>
-        <td style="white-space: nowrap;"><a href="yokohama.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-low">△医療DX(補強済)</span></td>
+        <td>yokohama</td>
+        <td><a href="yokohama.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">yamashitacho</td>
-        <td style="white-space: nowrap;"><a href="yamashitacho.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅中心静脈栄養法加算<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-low">△医療DX(補強済)</span></td>
+        <td>yamashitacho</td>
+        <td><a href="yamashitacho.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">kasukabe</td>
-        <td style="white-space: nowrap;"><a href="kasukabe.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-low">△医療DX(補強済)</span></td>
+        <td>kasukabe</td>
+        <td><a href="kasukabe.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
       </tr>
       <tr>
-        <td style="white-space: nowrap;">wako</td>
-        <td style="white-space: nowrap;"><a href="wako.html" target="_blank">📄 ページ確認</a></td>
-        <td class="kasan-list">調剤基本料３イ<br>服薬管理指導料の注１<br>地域支援・医薬品供給対応体制加算１<br>在宅患者訪問薬剤管理指導料<br>在宅薬学総合体制加算１<br>電子的調剤情報連携体制整備加算<br>バイオ後続品調剤体制加算</td>
-        <td style="white-space: nowrap;"><span class="status-low">△医療DX(補強済)</span></td>
+        <td>wako</td>
+        <td><a href="wako.html" target="_blank">📄 ページ確認</a></td>
+        <td><span class="status-low">△医療DX(補強済)</span></td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
+        <td class='mark-x'>-</td>
+        <td class='mark-o'>〇</td>
       </tr>
     </tbody>
   </table>
+  </div>
 </body>
 </html>
