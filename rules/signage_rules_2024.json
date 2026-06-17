@@ -1,1 +1,128 @@
-{}
+{
+  "pharmacy_compliance_rules": {
+    "base_requirements": {
+      "description": "すべての保険薬局における必須掲示項目",
+      "items": [
+        {
+          "name": "薬局開設許可証",
+          "locations": { "inside": true, "outside": false, "web": false },
+          "notes": "薬局内の見やすい場所"
+        },
+        {
+          "name": "保険薬局である旨の表示",
+          "locations": { "inside": true, "outside": true, "web": false },
+          "notes": "薬局の見やすい場所（内or外）"
+        },
+        {
+          "name": "調剤報酬点数表",
+          "locations": { "inside": true, "outside": false, "web": true },
+          "notes": "原則ウェブサイトにも掲載（経過措置ありの場合あり）"
+        },
+        {
+          "name": "個人情報保護方針",
+          "locations": { "inside": true, "outside": false, "web": false }
+        },
+        {
+          "name": "薬剤師不在時間",
+          "locations": { "inside": true, "outside": true, "web": false },
+          "condition": "不在になる場合のみ"
+        }
+      ]
+    },
+    "additional_requirements": {
+      "description": "特定の施設基準（加算）の届出・算定に伴い発生する掲示義務",
+      "items": [
+        {
+          "target_kasan": "地域支援体制加算",
+          "required_postings": [
+            {
+              "name": "在宅患者訪問薬剤管理指導を行う薬局である旨",
+              "locations": { "inside": true, "outside": true, "web": false }
+            },
+            {
+              "name": "近隣及び自局に直接連絡が取れる連絡先電話番号等",
+              "locations": { "inside": false, "outside": true, "web": false }
+            }
+          ]
+        },
+        {
+          "target_kasan": "後発医薬品調剤体制加算",
+          "required_postings": [
+            {
+              "name": "後発医薬品の調剤を積極的に行っている旨",
+              "locations": { "inside": true, "outside": true, "web": false }
+            }
+          ]
+        },
+        {
+          "target_kasan": "夜間・休日等加算",
+          "required_postings": [
+            {
+              "name": "開局時間",
+              "locations": { "inside": true, "outside": true, "web": false }
+            },
+            {
+              "name": "対象となる日及び受付時間",
+              "locations": { "inside": true, "outside": false, "web": false }
+            }
+          ]
+        },
+        {
+          "target_kasan": "居宅療養管理指導",
+          "required_postings": [
+            {
+              "name": "運営規程、サービス事業者等の重要事項",
+              "locations": { "inside": true, "outside": false, "web": true },
+              "notes": "原則としてウェブサイトに掲載"
+            }
+          ]
+        },
+        {
+          "target_kasan": "電子的調剤情報連携体制整備加算",
+          "required_postings": [
+            {
+              "name": "医療DX推進の体制・情報活用に関する事項",
+              "locations": { "inside": true, "outside": false, "web": true },
+              "notes": "原則としてウェブサイトに掲載"
+            }
+          ]
+        },
+        {
+          "target_kasan": "連携強化加算",
+          "required_postings": [
+            {
+              "name": "災害や新興感染症発生時における対応可能な体制",
+              "locations": { "inside": false, "outside": false, "web": true },
+              "notes": "ウェブサイトで広く周知（行政や薬剤師会のページ等へのリンクのみは不可）"
+              "warning": "【重要】未掲載のまま算定すると要件不備となり、個別指導等で自主返還（返金）リスクが生じます。速やかな是正を推奨します。" 
+            }
+          ]
+        },
+        {
+          "target_kasan": "バイオ後続品調剤体制加算",
+          "required_postings": [
+            {
+              "name": "バイオ後続品の調剤を積極的に行っている旨",
+              "locations": { "inside": true, "outside": true, "web": false }
+            }
+          ]
+        }
+      ]
+    },
+    "specific_treatments": {
+      "description": "特定の制度や取扱いに伴う掲示義務",
+      "items": [
+        {
+          "target": "長期収載品の調剤",
+          "required_postings": [
+            {
+              "name": "長期収載品の処方等又は調剤に係る費用徴収その他必要な事項",
+              "locations": { "inside": true, "outside": false, "web": true },
+              "notes": "原則としてウェブサイトに掲載"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
