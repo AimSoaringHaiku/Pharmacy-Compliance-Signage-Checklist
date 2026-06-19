@@ -9,3 +9,7 @@
 - [for human ls](for_human_ls.md)
 - [presentation](presentation.md)
 
+## 📌 監査・リスク検証ルール
+- [Collaboration Addition Verification and Commentary](Collaboration_Addition_Verification_and_Commentary.md)
+- [Risk Verification and LLM Guardrails](Risk_Verification_and_LLM_Guardrails.md)
+
