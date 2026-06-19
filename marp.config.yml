@@ -4,21 +4,33 @@ options:
   html: true
   markdown:
     style: |
-      /* 🌟 基本スライドのデザイン（ネイビー＆スレート） */
+      /* 🌟 基本スライド（通常表示）のデザイン */
       section {
-        background-color: #f7f7f7;
-        color: #2b2b2b;
-        font-family: "Yu Gothic", "Meiryo", sans-serif;
+        background-color: #f7f7f7 !important;
+        color: #2b2b2b !important;
+        font-family: "Yu Gothic", "Meiryo", sans-serif !important;
       }
-      h1 { color: #1e3a8a; }   /* 見出し：ネイビー */
+      h1 { color: #1e3a8a !important; }   /* 見出し：ネイビー */
       h2 { color: #0f172a; }   /* 小見出し：ダークスレート */
 
-      /* 🌟 一覧画面（オーバービュー）を「横3枚・背景白・余白狭め」に大改造するCSS */
-      body[data-bespoke-view='overview'] {
-        background: #f0f2f5 !important;
+      /* 🌟 画面いっぱいの「黒い裏画面」を、美しいWebグリッドサイトに強制リメイクするCSS */
+      :root, body, #preview, .bespoke-marp-parent, [data-bespoke-view="overview"] {
+        background: #f0f2f5 !important; /* 背景を黒からライトグレーへ強制変更 */
       }
-      body[data-bespoke-view='overview'] .bespoke-marp-parent {
+      
+      /* スライドの並びを「横3枚」に固定し、余白をギュッと狭める */
+      .bespoke-marp-parent, [data-bespoke-view="overview"] .bespoke-marp-parent {
+        display: grid !important;
         grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        gap: 20px !important;
+        gap: 15px !important;
         padding: 20px !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+      }
+
+      /* スライド1枚1枚に綺麗な白い影の枠線をつける */
+      section, .bespoke-marp-slide {
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08) !important;
+        border-radius: 8px !important;
+        border: 1px solid #e2e8f0 !important;
       }
