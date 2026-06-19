@@ -1,12 +1,5 @@
 ---
 marp: true
-theme: default
-backgroundColor: "#f7f7f7"
-color: "#2b2b2b"
-style: |
-  h1 { color: #1e3a8a; }   /* 見出し：ネイビー */
-  h2 { color: #0f172a; }   /* 小見出し：ダークスレート */
-  section { font-family: "Yu Gothic", "Meiryo", sans-serif; }
 ---
 
 # 薬局における掲示・掲載要件一覧
