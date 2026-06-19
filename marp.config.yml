@@ -4,7 +4,7 @@ options:
   html: true
   markdown:
     style: |
-      /* 🌟 基本スライド（通常表示）のデザイン */
+      /* 🌟 1. 通常スライド表示時のデザイン */
       section {
         background-color: #f7f7f7 !important;
         color: #2b2b2b !important;
@@ -13,13 +13,13 @@ options:
       h1 { color: #1e3a8a !important; }   /* 見出し：ネイビー */
       h2 { color: #0f172a; }   /* 小見出し：ダークスレート */
 
-      /* 🌟 画面いっぱいの「黒い裏画面」を、美しいWebグリッドサイトに強制リメイクするCSS */
-      :root, body, #preview, .bespoke-marp-parent, [data-bespoke-view="overview"] {
-        background: #f0f2f5 !important; /* 背景を黒からライトグレーへ強制変更 */
+      /* 🌟 2. 頑固な黒い裏画面システム（すべてのモード）を上から強制破壊するCSS */
+      :root, body, #preview, .bespoke-marp-parent, [data-bespoke-view="overview"], body[data-bespoke-view="overview"] {
+        background: #f0f2f5 !important; /* 黒背景を強制的にライトグレーへ変更 */
       }
       
-      /* スライドの並びを「横3枚」に固定し、余白をギュッと狭める */
-      .bespoke-marp-parent, [data-bespoke-view="overview"] .bespoke-marp-parent {
+      /* スライドの並びを「横4枚」から「横3枚」に力技で固定し、間隔を狭める */
+      .bespoke-marp-parent, [data-bespoke-view="overview"] .bespoke-marp-parent, body[data-bespoke-view="overview"] .bespoke-marp-parent {
         display: grid !important;
         grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
         gap: 15px !important;
@@ -28,8 +28,8 @@ options:
         margin: 0 auto !important;
       }
 
-      /* スライド1枚1枚に綺麗な白い影の枠線をつける */
-      section, .bespoke-marp-slide {
+      /* スライドの周りに美しい白い影の枠線をつけ、大きさを整える */
+      section, .bespoke-marp-slide, [data-bespoke-view="overview"] section {
         box-shadow: 0 4px 10px rgba(0,0,0,0.08) !important;
         border-radius: 8px !important;
         border: 1px solid #e2e8f0 !important;
