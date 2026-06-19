@@ -1,75 +1,65 @@
 #!/bin/bash
 set -e
 
-echo "🔍 更新されたMarpファイルを自動検知中..."
+echo "📦 新しい原稿（.md）をそのままGitHubへ出荷します..."
 
-# 1. ［自動検知］変更された.mdファイルを抽出
-CHANGED_FILES=$(git status --porcelain | grep 'slides/.*\.md$' | awk '{print $2}' || true)
-if [ -z "$CHANGED_FILES" ]; then
-  CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep 'slides/.*\.md$' || true)
-fi
+INDEX_FILE="docs/menu.md"
+echo "# 🗂 AIナレッジ倉庫（サブ目次）" > "$INDEX_FILE"
+echo "ファイルを追加してデプロイするだけで、以下に自動でカテゴリ分けされたリンクが生成されます。" >> "$INDEX_FILE"
+echo "" >> "$INDEX_FILE"
 
-# 2. ［ループ処理］更新されたファイルの数だけHTMLに変換（共通設定ファイルを指定）
-for FILE in $CHANGED_FILES; do
-  if [ -f "$FILE" ]; then
-    BASENAME=$(basename "$FILE" .md)
-    OUTPUT_HTML="docs/${BASENAME}.html"
-    
-    echo "🏗️  更新検知: ${FILE} ➔ ${OUTPUT_HTML} へ組み立て中..."
-    marp --config marp.config.yml "$FILE" -o "$OUTPUT_HTML"
+# 一時的な作業フォルダを作成
+TMP_DIR=$(mktemp -d)
+
+# docs内の .md ファイルをループ処理
+for FILE in docs/*.md; do
+  BF=$(basename "$FILE")
+  
+  # システム系のファイル（READMEや既存の01~03）は一覧から除外
+  if [ "$BF" = "menu.md" ] || [ "$BF" = "README.md" ] || [[ "$BF" =~ ^0[1-3]_.* ]]; then
+    continue
+  fi
+  
+  # アンダースコアをスペースにして見やすい名前に
+  DISPLAY_NAME=$(echo "$BF" | sed 's/\.md//g' | sed 's/_/ /g')
+  
+  # 🔍 【ここでブロック分けを自動判定】ファイル名に含まれる文字でカテゴリを決定
+  case "$BF" in
+    *Risk_Verification*|*Collaboration_Addition*)
+      CATEGORY="監査・リスク検証ルール"
+      ;;
+    *Web_Column*|*Request_Letter*)
+      CATEGORY="Web更新・現場への依頼書"
+      ;;
+    *for_human*|*presentation*)
+      CATEGORY="人間用プレゼン・一覧資料"
+      ;;
+    *)
+      CATEGORY="その他のドキュメント"
+      ;;
+  esac
+
+  # 判定したカテゴリ名の一時ファイルにリンクを書き込む
+  echo "- [$DISPLAY_NAME]($BF)" >> "$TMP_DIR/$CATEGORY.txt"
+done
+
+# カテゴリごとに menu.md に見出しを作って結合する
+for CAT_FILE in "$TMP_DIR"/*.txt; do
+  if [ -f "$CAT_FILE" ]; then
+    CAT_NAME=$(basename "$CAT_FILE" .txt)
+    echo "## 📌 $CAT_NAME" >> "$INDEX_FILE"
+    cat "$CAT_FILE" >> "$INDEX_FILE"
+    echo "" >> "$INDEX_FILE"
   fi
 done
 
-# 🌟［自動化］サブ目次ページ（menu.html）を自動作成
-echo "🗂️  サブ目次ページ（menu.html）を自動作成中..."
-INDEX_FILE="docs/menu.html"
+# お掃除
+rm -rf "$TMP_DIR"
 
-cat << 'html' > "$INDEX_FILE"
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIナレッジスライド倉庫</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f5; color: #333; max-width: 800px; margin: 40px auto; padding: 0 20px; }
-        h1 { border-bottom: 2px solid #ccc; padding-bottom: 10px; }
-        ul { list-style: none; padding: 0; }
-        li { background: white; margin: 10px 0; padding: 15px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        a { color: #0066cc; text-decoration: none; font-weight: bold; font-size: 1.1rem; width: 100%; display: block; }
-        a:hover { color: #004499; text-decoration: underline; }
-    </style>
-</head>
-<body>
-    <h1>🗂️ AIナレッジスライド倉庫（サブ目次）</h1>
-    <ul>
-html
-
-for HTML_FILE in docs/*.html; do
-  BF=$(basename "$HTML_FILE")
-  if [ "$BF" != "index.html" ] && [ "$BF" != "menu.html" ]; then
-    DISPLAY_NAME=$(echo "$BF" | sed 's/\.html//g' | sed 's/_/ /g')
-    echo "        <li><a href=\"${BF}\">📄 ${DISPLAY_NAME}</a></li>" >> "$INDEX_FILE"
-  fi
-done
-
-cat << 'html' >> "$INDEX_FILE"
-    </ul>
-</body>
-</html>
-html
-
-# 3. ［出荷］すべての変更をステージング
-echo "📦 成果物をステージング中..."
+# 出荷処理
 git add .
-
-# 4. ［出荷］自動コミット
-COMMIT_MSG="Upgrade: Separate data and design with marp.config.yml: $(date '+%Y-%m-%d %H:%M:%S')"
-echo "💾 コミット中: ${COMMIT_MSG}"
+COMMIT_MSG="Deploy markdown notes with Auto-Categories: $(date '+%Y-%m-%d %H:%M:%S')"
 git commit -m "${COMMIT_MSG}" || echo "⚠️ 変更なし"
-
-# 5. ［出荷］プッシュ
-echo "🚀 GitHubへ送信中..."
 git push origin main
 
-echo "✨ deploy.shのアップデートが完了しました！"
+echo "✨ 自動ブロック分け目次（menu.md）の生成と出荷が完了しました！"
