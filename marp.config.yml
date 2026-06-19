@@ -4,33 +4,48 @@ options:
   html: true
   markdown:
     style: |
-      /* 🌟 1. 通常スライド表示時のデザイン */
+      /* 🌟 1. 通常スライド表示時のデザイン（ネイビー＆グレー） */
       section {
         background-color: #f7f7f7 !important;
         color: #2b2b2b !important;
         font-family: "Yu Gothic", "Meiryo", sans-serif !important;
       }
-      h1 { color: #1e3a8a !important; }   /* 見出し：ネイビー */
-      h2 { color: #0f172a; }   /* 小見出し：ダークスレート */
+      h1 { color: #1e3a8a !important; }
+      h2 { color: #0f172a; }
 
-      /* 🌟 2. 頑固な黒い裏画面システム（すべてのモード）を上から強制破壊するCSS */
+      /* 🌟 2. 頑固な黒い一覧画面システムを上から強制破壊するCSS */
       :root, body, #preview, .bespoke-marp-parent, [data-bespoke-view="overview"], body[data-bespoke-view="overview"] {
-        background: #f0f2f5 !important; /* 黒背景を強制的にライトグレーへ変更 */
+        background: #f7f7f7 !important;
       }
       
-      /* スライドの並びを「横4枚」から「横3枚」に力技で固定し、間隔を狭める */
+      /* スライドの並びを縦1枚（ブログ風スクロール）に完全固定 */
       .bespoke-marp-parent, [data-bespoke-view="overview"] .bespoke-marp-parent, body[data-bespoke-view="overview"] .bespoke-marp-parent {
-        display: grid !important;
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        gap: 15px !important;
-        padding: 20px !important;
-        max-width: 1200px !important;
-        margin: 0 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 40px !important;
+        padding: 40px 20px !important;
+        max-width: 100% !important;
+        background: #f7f7f7 !important;
+        height: auto !important;
+        overflow-y: auto !important;
       }
 
-      /* スライドの周りに美しい白い影の枠線をつけ、大きさを整える */
+      /* スライド1枚1枚の設定 */
       section, .bespoke-marp-slide, [data-bespoke-view="overview"] section {
-        box-shadow: 0 4px 10px rgba(0,0,0,0.08) !important;
-        border-radius: 8px !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.06) !important;
+        border-radius: 12px !important;
         border: 1px solid #e2e8f0 !important;
+        width: 960px !important;
+        height: 540px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        margin: 0 auto !important;
+        
+        /* Marpの自動計算（縮小・絶対配置）を完全に上書き無効化 */
+        transform: none !important; 
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
       }
