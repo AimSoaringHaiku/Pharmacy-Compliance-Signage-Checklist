@@ -1,0 +1,43 @@
+/* @theme custom-theme */
+@import 'default';
+
+/* 1. 通常スライド表示時のデザイン */
+section {
+  background-color: #f7f7f7 !important;
+  color: #2b2b2b !important;
+  font-family: "Yu Gothic", "Meiryo", sans-serif !important;
+}
+h1 { color: #1e3a8a !important; }
+h2 { color: #0f172a !important; }
+
+/* 2. 頑固な黒い一覧画面システムを上から強制破壊するCSS */
+html[data-bespoke-view="overview"],
+html[data-bespoke-view="overview"] body,
+html[data-bespoke-view="overview"] .bespoke-marp-parent {
+  background-color: #f7f7f7 !important;
+  background-image: none !important;
+}
+
+/* スライドの並びを縦1枚（ブログ風スクロール）に完全固定 */
+html[data-bespoke-view="overview"] .bespoke-marp-parent {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 40px !important;
+  padding: 40px 20px !important;
+  height: auto !important;
+  overflow-y: visible !important;
+}
+
+/* Marpの自動計算（縮小・絶対配置）を完全に無効化 */
+html[data-bespoke-view="overview"] section,
+html[data-bespoke-view="overview"] .bespoke-marp-slide {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06) !important;
+  border-radius: 12px !important;
+  border: 1px solid #e2e8f0 !important;
+  width: 960px !important;
+  height: 540px !important;
+  position: static !important; /* 強制配置を解除 */
+  transform: none !important;  /* 強制縮小を解除 */
+  margin: 0 auto !important;
+}
