@@ -80,5 +80,5 @@
 * 📚 **[本プロジェクトのソース（一次資料）一覧](docs/03_source_list.md)**
 *  **[AIナレッジ倉庫（サブ目次）](docs/04_ai_knowledge_base.md)**
 * **[【現場向け】物理掲示物（アナログ）チェックリスト](docs/05_physical_signage.md)**
-*  **[過去記録集](menu.html)**
+*  **[過去記録集](docs/menu.html)**
 
