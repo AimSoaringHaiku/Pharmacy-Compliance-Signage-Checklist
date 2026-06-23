@@ -36,6 +36,8 @@ layout: default
 
 スプレッドシートの「拡張機能」＞「Apps Script」に登録し、セル上で `=GET_COMPLIANCE_HTML(B2)` のように呼び出して使用するカスタム関数です。Difyの代替として、加算状況から一瞬でHTMLを出力します。
 
+{% raw %}
+
 ```javascript
 /**
  * 加算状況からWeb掲載用のHTMLを出力するカスタム関数
@@ -82,3 +84,5 @@ function GET_COMPLIANCE_HTML(kasan_list) {
 
   return output_html.trim();
 }
+
+{% endraw %}
