@@ -5,6 +5,10 @@
 - [Request Letter](Request_Letter.md)
 - [Web Column Fill-in-the-Blank Explanation](Web_Column_Fill-in-the-Blank_Explanation.md)
 
+## 📌 その他のドキュメント
+- [04 ai knowledge base](04_ai_knowledge_base.md)
+- [05 physical signage](05_physical_signage.md)
+
 ## 📌 人間用プレゼン・一覧資料
 - [for human ls](for_human_ls.md)
 - [presentation](presentation.md)
