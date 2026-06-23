@@ -9,6 +9,9 @@
 | **薬局開設者の義務（管理薬剤師.com）** | 厚労省のルールを噛み砕いて解説しているページ。AI監査の正解基準の土台。 | [リンク](https://kanri.nkdesk.com/kanri/kanri1.2.php) |
 | **日生薬局_店舗一覧** | 対象となる全45店舗の店舗名・住所へのリンク一覧。 | [リンク](https://www.merhalsa.jp/yakkyoku/shop/) |
 | **日生薬局_江北店** | 監査のテストケースとなった実際のWebページ。 | [リンク](https://www.merhalsa.jp/yakkyoku/shop/kohoku/index.php) |
+| **厚労省：掲示事項等 実施上の留意事項（令和8年3月改定版）** | 令和8年度改定のWeb掲示ルール・新名称に関する公式な留意事項。AI判定の最新基準。 | [リンク](https://www.mhlw.go.jp/content/12400000/15-3.pdf) |
+| **厚労省：掲示事項等 告示本文** | Web掲示義務の法的根拠となる「平成18年厚生労働省告示第107号」のベーステキスト。 | [リンク](https://www.mhlw.go.jp/web/t_doc?dataId=84aa7837&dataType=0&pageNo=1) |
+| **関東信越厚生局：掲示事項等の一部改正（令和7年 保医発）** | 令和8年改定に向けた過渡期における掲示ルールの変更・厳格化の通知。 | [リンク](https://kouseikyoku.mhlw.go.jp/kantoshinetsu/gyomu/gyomu/hoken_kikan/tsuchi/r07.html) |
 
 ### 2. プロジェクト進行・スクリプト
 
