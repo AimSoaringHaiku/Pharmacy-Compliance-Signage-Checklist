@@ -23,6 +23,7 @@ layout: default
 | **0616_1129PS_結果の出力.txt** | PowerShellを用いてWebから「加算届出状況」等を自動抽出したログ。 |
 | **掲示物チェックシート（スプシ）** | プロジェクトの心臓部。全45店舗の判定結果が格納。 [リンク](https://docs.google.com/spreadsheets/d/1t7UNf-6ipZYvrmvk16U1lpB8f1RWIbAy0kdKf3pM2DI/edit?usp=sharing) |
 | **掲示物（Google Doc）** | HIL向けのサマリー報告書案や、中長期タスクのロードマップをまとめた文書。 [リンク](https://docs.google.com/document/d/1SdAXwAXCYjst4gUlhJw4DxlDTLUwuO70TNPEWVmM9OY/edit?usp=sharing)  |
+| **施設基準届出ポスター(R8)（スプシ）** | 各店舗が地方厚生局へ実際に届け出ている加算の公式マスタデータ。本監査の最終的な合否判定の根拠。 [リンク](https://docs.google.com/spreadsheets/d/15RIor7T6QC57tb1bXTLXh8Z--of12hq9mFTstIGNx-A/edit?usp=sharing) |
 
 ### 3. 最終成果物・マニュアル
 
